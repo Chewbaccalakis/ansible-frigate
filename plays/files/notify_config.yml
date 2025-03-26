@@ -89,7 +89,7 @@ alerts:
     userkey: 
     devices:
     sound:
-    priority: 0
+    priority:
     retry:
     expire:
     ttl:

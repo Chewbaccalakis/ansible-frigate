@@ -38,14 +38,38 @@
       block:
           - name: Create Frigate directory
             ansible.builtin.file:
-              path: /opt/frigate
+              path: /frigate
               state: directory
               mode: '0755'
 
           - name: Deploy Docker Compose template
             template:
               src: "templates/docker-compose.yml.j2"
-              dest: "/opt/frigate/docker-compose.yml"
+              dest: "/frigate/docker-compose.yml"
               owner: root
               group: root
               mode: "0644"
+
+    - name: Caddy Setup
+      block: 
+          - name: Create Caddy directory
+            ansible.builtin.file:
+              path: /frigate/caddy
+              state: directory
+              mode: '0755'
+
+          - name: Deploy Caddyfile template
+            template:
+              src: "templates/Caddyfile.j2"
+              dest: "/frigate/Caddyfile"
+              owner: root
+              group: root
+              mode: "0644"
+
+    - name: oauth2-proxy Setup
+      block:
+          - name: Create oauth2-proxy directory
+            ansible.builtin.file:
+              path: /frigate/oauth2-proxy
+              state: directory
+              mode: '0755'

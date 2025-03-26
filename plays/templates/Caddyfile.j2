@@ -1,4 +1,4 @@
-http://frigate.trochalakis.com {
+http://{{ public_url }} {
 	handle /oauth2/* {
 		reverse_proxy oauth2-proxy:4180 {
 			header_up X-Real-IP {remote_host}
@@ -9,18 +9,18 @@ http://frigate.trochalakis.com {
 		forward_auth oauth2-proxy:4180 {
 			uri /oauth2/auth
 			header_up X-Real-IP {remote_host}
-            copy_headers X-Auth-Request-User X-Auth-Request-Preferred-Username
+			copy_headers X-Auth-Request-User X-Auth-Request-Preferred-Username
 			@error status 401
 			handle_response @error {
 				redir * /oauth2/sign_in?rd={scheme}://{host}{uri}
 			}
 		}
 		reverse_proxy frigate:8971 {
-            transport http {
-                tls
-                tls_insecure_skip_verify
-            }
-            header_up X-Forwarded-User {header.X-Auth-Request-Preferred-Username}
-        }
+			transport http {
+				tls
+				tls_insecure_skip_verify
+			}
+			header_up X-Forwarded-User {header.X-Auth-Request-Preferred-Username}
+		}
 	}
 }

@@ -30,10 +30,14 @@ services:
     container_name: frigate
     restart: unless-stopped
     image: "{{ frigate_image | default('ghcr.io/blakeblackshear/frigate:0.15.0-beta7') }}"
+    {% if frigate_plus | default(false) %}
     environment:
       PLUS_API_KEY: "{{ frigate_plus_api_key | default('') }}"
+    {% endif %}
+    {% if tpu_enabled | default(false) %}
     devices:
-      - "{{ frigate_device | default('/dev/apex_0:/dev/apex_0') }}"
+      - "{{ coral_device }}"
+    {% endif %}
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - "{{ frigate_config_dir }}/config:/config"
@@ -45,7 +49,9 @@ services:
     ports:
       - "{{ frigate_webrtc_port | default('8555') }}:8555"
       - "{{ frigate_rtsp_port | default('8554') }}:8554"
+      {% if expose_api | default(false) %}
       - "{{ frigate_api_port | default('5000') }}:5000"
+      {% endif %}
     networks:
       - frigate-net
 
@@ -64,6 +70,7 @@ services:
     networks:
       - frigate-net
 
+  {% if neolink_enabled | default(false) %}
   neolink:
     container_name: neolink
     restart: unless-stopped
@@ -72,6 +79,7 @@ services:
       - "{{ neolink_config }}/neolink.toml:/etc/neolink.toml"
     networks:
       - frigate-net
+  {% endif %}
 
 networks:
   frigate-net:

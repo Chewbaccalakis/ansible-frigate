@@ -1,0 +1,17 @@
+reverse_proxy = true
+set_xauthrequest = true
+http_address="{{ oauth2_proxy_http_address }}"
+cookie_secret="{{ oauth2_proxy_cookie_secret }}"
+email_domains="{{ oauth2_proxy_email_domains }}"
+cookie_secure="{{ oauth2_proxy_cookie_secure }}"
+upstreams="{{ oauth2_proxy_upstreams }}"
+cookie_domains={{ oauth2_proxy_cookie_domains }}
+whitelist_domains={{ oauth2_proxy_whitelist_domains }}
+scope = "{{ oauth2_proxy_scope }}"
+# dex provider
+client_secret="{{ oauth2_proxy_client_secret }}"
+client_id="{{ oauth2_proxy_client_id }}"
+redirect_url="{{ oauth2_proxy_redirect_url }}"
+oidc_issuer_url="{{ oauth2_proxy_oidc_issuer_url }}"
+provider="{{ oauth2_proxy_provider }}"
+provider_display_name="{{ oauth2_proxy_provider_display_name }}"

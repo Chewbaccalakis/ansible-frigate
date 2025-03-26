@@ -3,7 +3,7 @@ bind_port = 8554
 
 
 [[cameras]]
-name = "backyard"
+name = "Camera01"
 username = "frigate"
 password = ""
 address = ""
