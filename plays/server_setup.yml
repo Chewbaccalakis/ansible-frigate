@@ -38,6 +38,14 @@
       block:
           - name: Create Frigate directory
             ansible.builtin.file:
-              path: /frigate
+              path: /opt/frigate
               state: directory
               mode: '0755'
+
+          - name: Deploy Docker Compose template
+            template:
+              src: "templates/docker-compose.yml.j2"
+              dest: "/opt/frigate/docker-compose.yml"
+              owner: root
+              group: root
+              mode: "0644"

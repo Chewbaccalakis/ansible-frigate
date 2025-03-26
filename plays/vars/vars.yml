@@ -1,0 +1,6 @@
+caddy_config: "/opt/caddy"
+oauth2_proxy_config: "/opt/oauth2-proxy"
+frigate_config_dir: "/opt/frigate"
+frigate_storage_dir: "/mnt/sda2/frigate/storage"
+frigate_notify_config: "/opt/frigate/notify"
+neolink_config: "/opt/neolink"
