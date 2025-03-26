@@ -1,0 +1,43 @@
+---
+- name: Setup Frigate Server
+  hosts: all
+  tasks:
+
+    - name: Server Setup
+      block:
+        - name: Update and upgrade apt packages
+          apt:
+            upgrade: yes
+            update_cache: yes
+          become: true
+
+        - name : Remove unused dependencies
+          apt: autoremove=true
+          become: true
+
+        - name : Clean Up the Cache
+          apt: autoclean=true
+          become: true
+
+        - name: ensure git is installed
+          apt:
+            name: "{{ packages }}"
+            state: latest
+          become: true
+          vars:
+            packages:
+              - git
+              - curl
+              - wget
+
+        - name: Import docker role
+          import_role:
+            name: roles/ansible-role-docker
+
+    - name: Frigate Setup
+      block:
+          - name: Create Frigate directory
+            ansible.builtin.file:
+              path: /frigate
+              state: directory
+              mode: '0755'
