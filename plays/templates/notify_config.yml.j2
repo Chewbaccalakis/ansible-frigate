@@ -1,0 +1,135 @@
+app:
+  mode: "{{ app_mode }}"
+  api:
+    enabled: {{ app_api_enabled }}
+    port: {{ app_api_port }}
+
+frigate:
+  server: "{{ frigate_server }}"
+  ignoressl: {{ frigate_ignoressl }}
+  public_url: "{{ frigate_public_url }}"
+  headers: {{ frigate_headers }}
+  startup_check:
+    attempts: {{ frigate_startup_check_attempts }}
+    interval: {{ frigate_startup_check_interval }}
+
+  webapi:
+    enabled: {{ frigate_webapi_enabled }}
+    interval: {{ frigate_webapi_interval }}
+
+  mqtt:
+    enabled: {{ frigate_mqtt_enabled }}
+    server: "{{ frigate_mqtt_server }}"
+    port: "{{ frigate_mqtt_port }}"
+    clientid: "{{ frigate_mqtt_clientid }}"
+    username: "{{ frigate_mqtt_username }}"
+    password: "{{ frigate_mqtt_password }}"
+    topic_prefix: "{{ frigate_mqtt_topic_prefix }}"
+
+  cameras:
+    exclude:
+      - "{{ frigate_cameras_exclude }}"
+
+alerts:
+  general:
+    title: "{{ alerts_general_title }}"
+    nosnap: "{{ alerts_general_nosnap }}"
+    snap_bbox: {{ alerts_general_snap_bbox }}
+    snap_timestamp: {{ alerts_general_snap_timestamp }}
+    snap_crop: {{ alerts_general_snap_crop }}
+    max_snap_retry: {{ alerts_general_max_snap_retry }}
+    notify_once: {{ alerts_general_notify_once }}
+    notify_detections: {{ alerts_general_notify_detections }}
+    recheck_delay: {{ alerts_general_recheck_delay }}
+    audio_only: "{{ alerts_general_audio_only }}"
+
+  zones:
+    unzoned: "{{ alerts_zones_unzoned }}"
+
+  labels:
+    min_score: "{{ alerts_labels_min_score }}"
+    allow:
+      - "{{ alerts_labels_allow_person }}"
+      - "{{ alerts_labels_allow_dog }}"
+      - "{{ alerts_labels_allow_cat }}"
+
+  discord:
+    enabled: {{ alerts_discord_enabled }}
+    webhook: "{{ alerts_discord_webhook }}"
+    template: "{{ alerts_discord_template }}"
+
+  gotify:
+    enabled: {{ alerts_gotify_enabled }}
+    server: "{{ alerts_gotify_server }}"
+    token: "{{ alerts_gotify_token }}"
+    ignoressl: "{{ alerts_gotify_ignoressl }}"
+    template: "{{ alerts_gotify_template }}"
+
+  mattermost:
+    enabled: {{ alerts_mattermost_enabled }}
+    webhook: "{{ alerts_mattermost_webhook }}"
+    channel: "{{ alerts_mattermost_channel }}"
+    username: "{{ alerts_mattermost_username }}"
+    priority: "{{ alerts_mattermost_priority }}"
+    ignoressl: "{{ alerts_mattermost_ignoressl }}"
+    headers: "{{ alerts_mattermost_headers }}"
+    template: "{{ alerts_mattermost_template }}"
+
+  ntfy:
+    enabled: {{ alerts_ntfy_enabled }}
+    server: "{{ alerts_ntfy_server }}"
+    topic: "{{ alerts_ntfy_topic }}"
+    ignoressl: "{{ alerts_ntfy_ignoressl }}"
+    headers: "{{ alerts_ntfy_headers }}"
+    template: "{{ alerts_ntfy_template }}"
+
+  pushover:
+    enabled: {{ alerts_pushover_enabled }}
+    token: "{{ alerts_pushover_token }}"
+    userkey: "{{ alerts_pushover_userkey }}"
+    devices: "{{ alerts_pushover_devices }}"
+    sound: "{{ alerts_pushover_sound }}"
+    priority: "{{ alerts_pushover_priority }}"
+    retry: "{{ alerts_pushover_retry }}"
+    expire: "{{ alerts_pushover_expire }}"
+    ttl: "{{ alerts_pushover_ttl }}"
+    template: "{{ alerts_pushover_template }}"
+
+  signal:
+    enabled: {{ alerts_signal_enabled }}
+    server: "{{ alerts_signal_server }}"
+    account: "{{ alerts_signal_account }}"
+    recipients: "{{ alerts_signal_recipients }}"
+    ignoressl: "{{ alerts_signal_ignoressl }}"
+    template: "{{ alerts_signal_template }}"
+
+  smtp:
+    enabled: {{ alerts_smtp_enabled }}
+    server: "{{ alerts_smtp_server }}"
+    port: "{{ alerts_smtp_port }}"
+    tls: "{{ alerts_smtp_tls }}"
+    user: "{{ alerts_smtp_user }}"
+    password: "{{ alerts_smtp_password }}"
+    recipient: "{{ alerts_smtp_recipient }}"
+    template: "{{ alerts_smtp_template }}"
+
+  telegram:
+    enabled: {{ alerts_telegram_enabled }}
+    chatid: "{{ alerts_telegram_chatid }}"
+    token: "{{ alerts_telegram_token }}"
+    template: "{{ alerts_telegram_template }}"
+
+  webhook:
+    enabled: {{ alerts_webhook_enabled }}
+    server: "{{ alerts_webhook_server }}"
+    ignoressl: "{{ alerts_webhook_ignoressl }}"
+    method: "{{ alerts_webhook_method }}"
+    params: "{{ alerts_webhook_params }}"
+    headers: "{{ alerts_webhook_headers }}"
+    template: "{{ alerts_webhook_template }}"
+
+monitor:
+  enabled: {{ monitor_enabled }}
+  url: "{{ monitor_url }}"
+  interval: "{{ monitor_interval }}"
+  ignoressl: "{{ monitor_ignoressl }}"

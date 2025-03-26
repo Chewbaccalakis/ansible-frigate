@@ -1,0 +1,14 @@
+oauth2_proxy_http_address: "0.0.0.0:4180"
+oauth2_proxy_cookie_secret: "your-secret"
+oauth2_proxy_email_domains: "trochalakis.com"
+oauth2_proxy_cookie_secure: "false"
+oauth2_proxy_upstreams: "https://frigate.trochalakis.com"
+oauth2_proxy_cookie_domains: [".trochalakis.com"]
+oauth2_proxy_whitelist_domains: [".trochalakis.com"]
+oauth2_proxy_scope: "openid email profile groups"
+oauth2_proxy_client_secret: "your-client-secret"
+oauth2_proxy_client_id: "your-client-id"
+oauth2_proxy_redirect_url: "https://frigate.trochalakis.com/oauth2/callback"
+oauth2_proxy_oidc_issuer_url: "https://auth.trochalakis.com"
+oauth2_proxy_provider: "oidc"
+oauth2_proxy_provider_display_name: "Authelia"

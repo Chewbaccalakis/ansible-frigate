@@ -1,0 +1,14 @@
+auth:
+  enabled: false
+
+proxy:
+  header_map:
+    user: "X-Forwarded-User"
+  logout_url: "/oauth2/sign_out"
+
+{% if tpu_enabled | default(false) %}
+detectors:
+  coral:
+    type: {{ coral_type }}
+    device: {{ coral_device }}
+{% endif %}
