@@ -1,7 +1,7 @@
 public_url: "frigate.example.com"
 frigate_plus: false
 frigate_plus_api_key: ""
-frigate_config_dir: "/frigate/frigate"
+frigate_config_dir: "/frigate"
 frigate_storage_dir: "/mnt/sda2/frigate/storage"
 frigate_webrtc_port: "8555"
 frigate_rtsp_port: "8554"
