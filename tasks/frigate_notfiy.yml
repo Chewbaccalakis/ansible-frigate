@@ -9,3 +9,5 @@
     src: "templates/notify_config.yml.j2"
     dest: "{{ frigate_config_dir }}/frigate_notify/config.yml"
     mode: "0644"
+  args:
+    creates: "{{ frigate_config_dir }}/frigate_notify/config.yml"
