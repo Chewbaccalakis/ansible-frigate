@@ -4,25 +4,12 @@ app_api_port: 8000
 
 frigate_server: "http://frigate:5000"
 frigate_ignoressl: true
-frigate_public_url: "https://frigate.trochalakis.com"
+frigate_public_url: ""
 frigate_headers: {}
 frigate_startup_check_attempts: 5
 frigate_startup_check_interval: 30
 frigate_webapi_enabled: true
 frigate_webapi_interval: 30
-
-## MQTT
-frigate_mqtt_enabled: false
-frigate_mqtt_server: ""
-frigate_mqtt_port: ""
-frigate_mqtt_clientid: ""
-frigate_mqtt_username: ""
-frigate_mqtt_password: ""
-frigate_mqtt_topic_prefix: ""
-
-
-frigate_cameras_exclude:
-  - "garage"
 
 alerts_general_title: "Frigate Alert"
 alerts_general_nosnap: "allow"
@@ -36,10 +23,15 @@ alerts_general_recheck_delay: 0
 alerts_general_audio_only: "allow"
 
 alerts_zones_unzoned: "allow"
-alerts_labels_min_score: ""
-alerts_labels_allow_person: "person"
-alerts_labels_allow_dog: "dog"
-alerts_labels_allow_cat: "cat"
+
+## MQTT
+frigate_mqtt_enabled: false
+frigate_mqtt_server: ""
+frigate_mqtt_port: ""
+frigate_mqtt_clientid: ""
+frigate_mqtt_username: ""
+frigate_mqtt_password: ""
+frigate_mqtt_topic_prefix: ""
 
 ## Discord
 alerts_discord_enabled: false
@@ -72,7 +64,7 @@ alerts_ntfy_headers: {}
 alerts_ntfy_template: ""
 
 ## Pushover
-alerts_pushover_enabled: true
+alerts_pushover_enabled: false
 alerts_pushover_token: ""
 alerts_pushover_userkey: ""
 alerts_pushover_devices: ""

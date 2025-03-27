@@ -1,0 +1,17 @@
+public_url: "frigate.example.com"
+frigate_plus: false
+frigate_plus_api_key: ""
+frigate_config_dir: "/frigate/frigate"
+frigate_storage_dir: "/mnt/sda2/frigate/storage"
+frigate_webrtc_port: "8555"
+frigate_rtsp_port: "8554"
+oauth2_proxy_cookie_secret: "your-secret"
+oauth2_proxy_email_domains: "example.com"
+oauth2_proxy_upstreams: "https://frigate.example.com"
+oauth2_proxy_cookie_domains: [".example.com"]
+oauth2_proxy_whitelist_domains: [".example.com"]
+oauth2_proxy_client_secret: "your-client-secret"
+oauth2_proxy_client_id: "your-client-id"
+oauth2_proxy_redirect_url: "https://frigate.example.com/oauth2/callback"
+oauth2_proxy_oidc_issuer_url: "https://auth.example.com"
+oauth2_proxy_provider_display_name: "Authelia"

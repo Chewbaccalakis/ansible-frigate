@@ -1,0 +1,38 @@
+- include_tasks: common.yml
+
+- include_tasks: caddy.yml
+
+- include_tasks: oauth2-proxy.yml
+
+- include_tasks: frigate.yml
+
+- include_tasks: frigate_notify.yml
+  when: frigate_notify_enabled == true
+
+- include_tasks: neolink.yml
+  when: neolink_enabled == true
+
+- name: Tear down existing services
+  community.docker.docker_compose_v2:
+    project_src: /frigate
+    state: absent
+
+- name: Create and start services
+  community.docker.docker_compose_v2:
+    project_src: /frigate
+  register: output
+
+- name: Show results
+  ansible.builtin.debug:
+    var: output
+
+- name: Verify that web and db services are running
+  ansible.builtin.assert:
+    that:
+      - web_container.State == 'running'
+      - db_container.State == 'running'
+  vars:
+    web_container: >-
+      {{ output.containers | selectattr("Service", "equalto", "web") | first }}
+    db_container: >-
+      {{ output.containers | selectattr("Service", "equalto", "db") | first }}

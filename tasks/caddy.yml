@@ -1,0 +1,13 @@
+- name: Create Caddy directory
+  ansible.builtin.file:
+    path: /frigate/caddy
+    state: directory
+    mode: '0755'
+
+- name: Deploy Caddyfile template
+  template:
+    src: "templates/Caddyfile.j2"
+    dest: "/frigate/Caddyfile"
+    owner: root
+    group: root
+    mode: "0644"
