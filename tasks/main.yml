@@ -83,6 +83,8 @@
         src: "templates/frigate_config.yml.j2"
         dest: "{{ frigate_config_dir }}/frigate/config/config.yaml"
         mode: "0755"
+      args:
+        creates: "{{ frigate_config_dir }}/frigate/config/config.yaml"
 
 - include_tasks: frigate_notify.yml
   when: frigate_notify_enabled == true
