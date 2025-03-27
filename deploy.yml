@@ -2,6 +2,9 @@
 - name: Setup Frigate Server
   hosts: all
   tasks:
+    - name: Get variables from vars/
+      inlcude_vars: vars/
+
     - name: Server Setup
       block:
         - name: Update and upgrade apt packages
@@ -73,8 +76,33 @@
               state: directory
               mode: '0755'
 
+          - name: Copy custom sign in page 
+            ansible.builtin.copy:
+            src: files/sign_in.html
+            dest: "{{ oauth2_proxy_config }}/custom-templates/sign_in.html"
+            owner: foo
+            group: foo
+            mode: '0644'
+
+          - name: Copy frigate logo for sign in page
+            ansible.builtin.copy:
+            src: files/logo.svg
+            dest: "{{ oauth2_proxy_config }}/custom-templates/logo.svg"
+            owner: foo
+            group: foo
+            mode: '0644'
+
+          - name: Deploy oauth2-proxy template
+            template:
+              src: "templates/oauth2-proxy.yml.j2"
+              dest: "{{ oauth2_proxy_config }}/oauth2-proxy.yml"
+              owner: root
+              group: root
+              mode: "0644"
+
     - name: Frigate Setup
       block:
+      
           - name: Create frigate directory
             ansible.builtin.file:
               path: /frigate/frigate
