@@ -1,0 +1,11 @@
+- name: Create frigate_notify directory
+  ansible.builtin.file:
+    path: "{{ frigate_config_dir }}/frigate_notify"
+    state: directory
+    mode: '0755'
+
+- name: Deploy frigate_notify template
+  template:
+    src: "templates/notify_config.yml.j2"
+    dest: "{{ frigate_config_dir }}/frigate_notify/config.yml"
+    mode: "0644"

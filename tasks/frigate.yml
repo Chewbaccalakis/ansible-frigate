@@ -1,5 +1,0 @@
-- name: Create frigate directory
-  ansible.builtin.file:
-    path: "{{ frigate_config_dir }}/frigate"
-    state: directory
-    mode: '0755'
