@@ -14,22 +14,16 @@
   ansible.builtin.copy:
     src: "files/sign_in.html"
     dest: "{{ frigate_config_dir }}/oauth2-proxy/custom-templates/sign_in.html"
-    owner: foo
-    group: foo
-    mode: '0644'
+    mode: '0755'
 
 - name: Copy frigate logo for sign in page
   ansible.builtin.copy:
     src: "files/logo.svg"
     dest: "{{ frigate_config_dir }}/oauth2-proxy/custom-templates/logo.svg"
-    owner: foo
-    group: foo
-    mode: '0644'
+    mode: '0755'
 
 - name: Deploy oauth2-proxy template
   template:
     src: "templates/oauth2-proxy.yml.j2"
     dest: "{{ frigate_config_dir }}/oauth2-proxy/oauth2-proxy.yml"
-    owner: root
-    group: root
-    mode: "0644"
+    mode: "0755"
