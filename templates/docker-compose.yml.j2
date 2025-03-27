@@ -36,7 +36,7 @@ services:
     {% endif %}
     {% if tpu_enabled | default(false) %}
     devices:
-      - "{{ coral_device }}"
+      - "{{ tpu_device }}"
     {% endif %}
     volumes:
       - /etc/localtime:/etc/localtime:ro

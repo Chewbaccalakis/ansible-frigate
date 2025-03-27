@@ -34,6 +34,12 @@
         state: directory
         mode: '0755'
 
+    - name: Create frigate config directory
+      ansible.builtin.file:
+        path: "{{ frigate_config_dir }}/frigate/config"
+        state: directory
+        mode: '0755'
+
 - name: Copy static resources
   block:
     - name: Copy custom sign in page 
@@ -70,6 +76,12 @@
       template:
         src: "templates/oauth2-proxy.cfg.j2"
         dest: "{{ frigate_config_dir }}/oauth2-proxy/oauth2-proxy.cfg"
+        mode: "0755"
+
+    - name: Deploy frigate config template
+      template:
+        src: "templates/frigate_config.yml.j2"
+        dest: "{{ frigate_config_dir }}/frigate/config/config.yaml"
         mode: "0755"
 
 - include_tasks: frigate_notify.yml

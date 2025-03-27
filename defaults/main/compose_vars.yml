@@ -7,11 +7,11 @@ public_url: "frigate.example.com"
 oauth2_proxy_image: "quay.io/oauth2-proxy/oauth2-proxy:v7.8.1"
 
 # Frigate Configuration
-frigate_image: "ghcr.io/blakeblackshear/frigate:0.15.0-beta7"
+frigate_image: "ghcr.io/blakeblackshear/frigate:stable"
 frigate_plus: false
 frigate_plus_api_key: ""
 tpu_enabled: false
-coral_device: "/dev/apex_0:/dev/apex_0"
+tpu_device: "/dev/apex_0:/dev/apex_0"
 frigate_config_dir: "/frigate"
 frigate_storage_dir: "/frigate/storage"
 frigate_tmpfs_size: 1000000000
