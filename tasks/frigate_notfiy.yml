@@ -4,10 +4,14 @@
     state: directory
     mode: '0755'
 
+- name: Check if frigate_notify config exists
+  stat:
+    path: "{{ frigate_config_dir }}/frigate_notify/config.yml"
+  register: frigate_notify_config_file
+
 - name: Deploy frigate_notify template
   template:
     src: "templates/notify_config.yml.j2"
     dest: "{{ frigate_config_dir }}/frigate_notify/config.yml"
     mode: "0644"
-  args:
-    creates: "{{ frigate_config_dir }}/frigate_notify/config.yml"
+  when: not frigate_notify_config_file.stat.exists

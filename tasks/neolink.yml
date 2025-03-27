@@ -4,8 +4,14 @@
     state: directory
     mode: '0755'
 
+- name: Check if frigate_notify config exists
+  stat:
+    path: "{{ frigate_config_dir }}/neolink/neolink.toml"
+  register: neolink_config_file  
+
 - name: Copy neolink.toml
   ansible.builtin.copy:
     src: "files/neolink.toml"
     dest: "{{ frigate_config_dir }}/neolink/neolink.toml"
     mode: '0755'
+  when: not neolink_config_file.stat.exists
