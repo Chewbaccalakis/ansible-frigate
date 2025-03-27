@@ -13,7 +13,7 @@ frigate_plus_api_key: ""
 tpu_enabled: false
 coral_device: "/dev/apex_0:/dev/apex_0"
 frigate_config_dir: "/frigate"
-frigate_storage_dir: "/mnt/sda2/frigate/storage"
+frigate_storage_dir: "/frigate/storage"
 frigate_tmpfs_size: 1000000000
 frigate_webrtc_port: "8555"
 frigate_rtsp_port: "8554"
