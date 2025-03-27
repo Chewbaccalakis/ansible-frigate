@@ -7,10 +7,10 @@ services:
       - "{{ caddy_http_port | default('80') }}:80"
       - "{{ caddy_https_port | default('443') }}:443"
     volumes:
-      - "{{ caddy_config }}/Caddyfile:/etc/caddy/Caddyfile"
-      - "{{ caddy_config }}/site:/srv"
-      - "{{ caddy_config }}/caddy/data:/data"
-      - "{{ caddy_config }}/caddy/config:/config"
+      - "{{ frigate_config_dir }}/caddy/Caddyfile:/etc/caddy/Caddyfile"
+      - "{{ frigate_config_dir }}/caddy/site:/srv"
+      - "{{ frigate_config_dir }}/caddy/data:/data"
+      - "{{ frigate_config_dir }}/caddy/config:/config"
     networks:
       - frigate-net
 
@@ -20,8 +20,8 @@ services:
     command: --config /oauth2-proxy.cfg --custom-templates-dir /custom-templates --custom-sign-in-logo /custom-templates/logo.svg
     hostname: oauth2-proxy
     volumes:
-      - "{{ oauth2_proxy_config }}/oauth2-proxy.cfg:/oauth2-proxy.cfg"
-      - "{{ oauth2_proxy_config }}/custom-templates:/custom-templates"
+      - "{{ frigate_config_dir }}/oauth2-proxy/oauth2-proxy.cfg:/oauth2-proxy.cfg"
+      - "{{ frigate_config_dir }}/oauth2-proxy/custom-templates:/custom-templates"
     restart: unless-stopped
     networks:
       - frigate-net
@@ -40,7 +40,7 @@ services:
     {% endif %}
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - "{{ frigate_config_dir }}/config:/config"
+      - "{{ frigate_config_dir }}/frigate/config:/config"
       - "{{ frigate_storage_dir }}:/media/frigate"
       - type: tmpfs
         target: /tmp/cache
@@ -64,7 +64,7 @@ services:
     environment:
       - TZ={{ frigate_notify_timezone | default('America/Los_Angeles') }}
     volumes:
-      - "{{ frigate_notify_config }}/config.yml:/app/config.yml"
+      - "{{ frigate_config_dir }}/frigate_notify/config.yml:/app/config.yml"
     restart: unless-stopped
     depends_on:
       - frigate
@@ -78,7 +78,7 @@ services:
     restart: unless-stopped
     image: "{{ neolink_image | default('quantumentangledandy/neolink:latest') }}"
     volumes:
-      - "{{ neolink_config }}/neolink.toml:/etc/neolink.toml"
+      - "{{ frigate_config_dir }}/neolink/neolink.toml:/etc/neolink.toml"
     networks:
       - frigate-net
   {% endif %}

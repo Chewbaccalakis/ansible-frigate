@@ -19,7 +19,7 @@
 
 - name: Create and start services
   community.docker.docker_compose_v2:
-    project_src: /frigate
+    project_src: "{{ frigate_config_dir }}"
   register: output
 
 - name: Show results

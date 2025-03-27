@@ -4,14 +4,14 @@
 
 - name: Create Frigate directory
   ansible.builtin.file:
-    path: /frigate
+    path: "{{ frigate_config_dir }}"
     state: directory
     mode: '0755'
 
 - name: Deploy Docker Compose template
   template:
     src: "templates/docker-compose.yml.j2"
-    dest: "/frigate/docker-compose.yml"
+    dest: "{{ frigate_config_dir }}/docker-compose.yml"
     owner: root
     group: root
     mode: "0644"

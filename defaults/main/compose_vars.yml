@@ -1,12 +1,10 @@
 # Caddy Configuration
 caddy_http_port: "80"
 caddy_https_port: "443"
-caddy_config: "/frigate/caddy"
 public_url: "frigate.example.com"
 
 # OAuth2 Proxy Configuration
 oauth2_proxy_image: "quay.io/oauth2-proxy/oauth2-proxy:v7.8.1"
-oauth2_proxy_config: "/frigate/oauth2-proxy"
 
 # Frigate Configuration
 frigate_image: "ghcr.io/blakeblackshear/frigate:0.15.0-beta7"
@@ -14,7 +12,7 @@ frigate_plus: false
 frigate_plus_api_key: ""
 tpu_enabled: false
 coral_device: "/dev/apex_0:/dev/apex_0"
-frigate_config_dir: "/frigate/frigate"
+frigate_config_dir: "/frigate"
 frigate_storage_dir: "/mnt/sda2/frigate/storage"
 frigate_tmpfs_size: 1000000000
 frigate_webrtc_port: "8555"
@@ -27,9 +25,7 @@ frigate_notify_enabled: false
 frigate_notify_image: "ghcr.io/0x2142/frigate-notify:latest"
 frigate_notify_port: "8000"
 frigate_notify_timezone: "America/Los_Angeles"
-frigate_notify_config: "/frigate/frigate-notify"
 
 # Neolink Configuration
 neolink_enabled: false
 neolink_image: "quantumentangledandy/neolink:latest"
-neolink_config: "/frigate/neolink"
