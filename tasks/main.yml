@@ -78,13 +78,17 @@
         dest: "{{ frigate_config_dir }}/oauth2-proxy/oauth2-proxy.cfg"
         mode: "0755"
 
-    - name: Deploy frigate config template
+    - name: Check if Frigate config exists
+      stat:
+        path: "{{ frigate_config_dir }}/frigate/config/config.yaml"
+      register: frigate_config_file
+
+    - name: Deploy Frigate config template if it does not exist
       template:
         src: "templates/frigate_config.yml.j2"
         dest: "{{ frigate_config_dir }}/frigate/config/config.yaml"
         mode: "0755"
-      args:
-        creates: "{{ frigate_config_dir }}/frigate/config/config.yaml"
+      when: not frigate_config_file.stat.exists
 
 - include_tasks: frigate_notify.yml
   when: frigate_notify_enabled == true
