@@ -4,6 +4,7 @@ Ansible Role to deploy frigate w/ caddy and oauth2-proxy
 
 ### Variables
 #### Docker Compose Vars
+```
 ##### Caddy Configuration
 caddy_http_port: "80"
 caddy_https_port: "443"
@@ -35,12 +36,16 @@ frigate_notify_timezone: "America/Los_Angeles"
 ##### Neolink Configuration
 neolink_enabled: false
 neolink_image: "quantumentangledandy/neolink:latest"
+```
 
 #### Frigate Vars
+```
 coral_type: "edgetpu"
 coral_device: "pci"
+```
 
 #### Oauth2 proxy vars
+```
 oauth2_proxy_http_address: "0.0.0.0:4180"
 oauth2_proxy_cookie_secret: "your-secret"
 oauth2_proxy_email_domains: "trochalakis.com"
@@ -55,8 +60,10 @@ oauth2_proxy_redirect_url: "https://frigate.example.com/oauth2/callback"
 oauth2_proxy_oidc_issuer_url: "https://auth.example.com"
 oauth2_proxy_provider: "oidc"
 oauth2_proxy_provider_display_name: "OIDC"
+```
 
 #### Frigate Notify Vars
+```
 app_mode: "events"
 app_api_enabled: true
 app_api_port: 8000
@@ -172,6 +179,6 @@ monitor_enabled: false
 monitor_url: ""
 monitor_interval: ""
 monitor_ignoressl: ""
-
+```
 ### Notes
     - Built to be behind another reverse proxy. Built in caddy instance does not handle tls
