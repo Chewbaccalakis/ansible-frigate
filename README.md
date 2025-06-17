@@ -1,6 +1,6 @@
 # Ansible-frigate-role
 
-Ansible Role to deploy frigate w/ caddy and oauth2-proxy
+Ansible Role to deploy frigate w/ caddy and oauth2-proxy. Optionally can include Frigate Notify and Neolink
 
 ### Variables
 #### Docker Compose Vars
