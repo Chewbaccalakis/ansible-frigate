@@ -181,4 +181,4 @@ monitor_interval: ""
 monitor_ignoressl: ""
 ```
 ### Notes
-    - Built to be behind another reverse proxy. Built in caddy instance does not handle tls
+- Built to be behind another reverse proxy. Built in caddy instance does not handle tls
